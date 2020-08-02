@@ -58,17 +58,13 @@ class BurritoStore extends EventEmitter {
         const [
             received,
             given,
-            receivedToday,
-            givenToday,
-        ]: [Sum[], Sum[], number, number] = await Promise.all([
+        ]: [Sum[], Sum[]] = await Promise.all([
             this.database.getScore(user, 'to'),
             this.database.getScore(user, 'from'),
-            this.givenBurritosToday(user, 'to'),
-            this.givenBurritosToday(user, 'from'),
         ]);
         return {
-            receivedToday,
-            givenToday,
+            receivedToday: 0,
+            givenToday: 0,
             _id: user,
             received: received.length,
             given: given.length,
