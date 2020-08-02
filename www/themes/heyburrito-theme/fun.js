@@ -134,14 +134,6 @@ function addUserInfo(user, container) {
   <div class="scoreboard__user__stats__title"><strong>Today</strong></div>
 
   <ol class="scoreboard__user__stats__list">
-    <li>
-      <strong>Received</strong>
-      <span class="score mini">${user.receivedToday}</span>
-    </li>
-    <li>
-      <strong>Given</strong>
-      <span class="score mini">${user.givenToday}</span>
-    </li>
   </ol>
 </div>`;
 
@@ -151,26 +143,14 @@ function addStats(data) {
     const element = document.getElementById(`user:${data.user.username}`);
     const statsEl = element.querySelector('[data-stats]');
     const infoEl = element.querySelector('[data-info]');
-    const todayFromEl = element.querySelector('[data-today-from]');
-    const todayToEl = element.querySelector('[data-today-to]');
 
     const fromEl = element.querySelector('[data-from]');
     const toEl = element.querySelector('[data-to]');
 
     fromEl.innerHTML = '';
     toEl.innerHTML = '';
-    todayFromEl.innerHTML = '';
-    todayToEl.innerHTML = '';
 
     addUserInfo(data.user,infoEl);
-    if(data.givenToday){
-        data.givenToday.forEach((user) => addStatsRow(user,todayToEl));
-    }
-
-    if(data.receivedToday){
-        data.receivedToday.forEach((user) => addStatsRow(user,todayFromEl));
-    }
-
 
     if (data.given) {
         data.given.forEach((user) => addStatsRow(user, toEl));
@@ -231,24 +211,6 @@ function createElement(data, display) {
 
   <div class="scoreboard__user__stats__info" data-info>
   </div>
-
-
-  <div class="scoreboard__user__stats__today">
-
-    <div class="scoreboard__user__stats__column">
-<div class="scoreboard__user__stats__title"><strong>From ( Today )</strong></div>
-      <ol class="scoreboard__user__stats__list" data-today-from>
-      </ol>
-    </div>
-
-    <div class="scoreboard__user__stats__column">
-      <strong class="scoreboard__user__stats__title">To ( Today )</strong>
-      <ol class="scoreboard__user__stats__list" data-today-to>
-      </ol>
-    </div>
-
-  </div>
-
 
   <div class="scoreboard__user__stats__column">
     <strong class="scoreboard__user__stats__title">From</strong>
