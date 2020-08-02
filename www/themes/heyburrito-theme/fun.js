@@ -128,13 +128,6 @@ function addUserInfo(user, container) {
       <span class="score mini">${user.given}</span>
     </li>
   </ol>
-</div>
-
-<div class="scoreboard__user__stats__column">
-  <div class="scoreboard__user__stats__title"><strong>Today</strong></div>
-
-  <ol class="scoreboard__user__stats__list">
-  </ol>
 </div>`;
 
     container.innerHTML = html;
