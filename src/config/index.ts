@@ -7,7 +7,7 @@ import {
     defaultTheme,
     root,
     getThemePath,
-    getThemeName
+    getThemeName,
 } from '../lib/utils';
 
 
@@ -15,7 +15,7 @@ const isFalse = (input: string) => (input === 'false' || input === 'no' || input
 const isTrue = (input: string) => (input === 'true' || input === 'yes' || input === '1');
 
 export function fixEmoji(input) {
-    let inputFix = input
+    let inputFix = input;
     if (!input.startsWith(':')) inputFix = `:${inputFix}`;
     if (!input.endsWith(':')) inputFix = `${inputFix}:`;
     return inputFix;
@@ -28,13 +28,13 @@ export function getBool(inputKey: string, defaultValue: boolean) {
     if (isFalse(key)) return false;
     if (isTrue(key)) return true;
     return defaultValue;
-};
+}
 
 export function getNum(inputKey: string, defaultValue: number): number {
     if (!inputKey) return defaultValue;
     const integer = Number(inputKey);
-    return !!integer ? integer : defaultValue;
-};
+    return integer || defaultValue;
+}
 
 const config = {
     production: {
@@ -72,7 +72,7 @@ const config = {
         },
         misc: {
             slackMock: false,
-            log_level: process.env.LOG_LEVEL || 'info'
+            log_level: process.env.LOG_LEVEL || 'info',
         },
     },
     development: {
@@ -110,7 +110,7 @@ const config = {
         },
         misc: {
             slackMock: false,
-            log_level: process.env.LOG_LEVEL || 'debug'
+            log_level: process.env.LOG_LEVEL || 'debug',
         },
     },
     testing: {
